@@ -1,9 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    
+    Layout = "_Layout";
+
 }
 
-    
+
 <!-- //header -->
     <header>
 	<div class="container">
@@ -56,7 +57,7 @@
                             <div class="banner-buttons slider-info position-absolute" style="width:800px;">
                                 @if (User.Identity.IsAuthenticated) {
                                     
-                                    <a asp-controller="Dashboard" asp-action="Index" class="btn mr-2" data-selector="a.btn, button.btn" style="">Dashboard</a>
+                                    <a href="~/Dashboard/index" class="btn mr-2" data-selector="a.btn, button.btn" style="">Dashboard</a>
 		                            <a href="#services" class="btn" data-selector="a.btn, button.btn" style="border-radius: 0px; font-size: 15px;">KNOW MORE</a>
 
                                 } else { 
@@ -265,6 +266,3 @@
 
 
 
-
-
- 

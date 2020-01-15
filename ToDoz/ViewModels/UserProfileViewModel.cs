@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using ToDoz.Models;
 
-namespace SampleMvcApp.ViewModels
+namespace ToDoz.ViewModels
 {
-    public class UserProfileViewModel
+    public class UserProfileViewModel : IdentityUser
     {
         
 
@@ -16,5 +18,22 @@ namespace SampleMvcApp.ViewModels
         public string Name { get; set; }
 
         public string ProfileImage { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Adresse { get; set; }
+
+        public string Birthday { get; set; }
+
+        public string TasksDone { get; set; }
+
+        public string Role { get; set; }
+
+        public ICollection<Pool> Pool { get; set; }
+
+        public ICollection<Lane> Lane { get; set; }
+
+
+
     }
 }

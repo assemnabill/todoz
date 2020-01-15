@@ -3,18 +3,23 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SampleMvcApp.ViewModels;
+using ToDoz.ViewModels;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace SampleMvcApp.Controllers
+
+
+namespace ToDoz.Controllers
 {
     public class AccountController : Controller
     {
-        public async Task Login(string returnUrl = "/Dashboard")
+        public async Task Login(string returnUrl = "/Dashboard/index/")
         {
-            await HttpContext.ChallengeAsync("Auth0", new AuthenticationProperties() { RedirectUri = returnUrl });
+            await HttpContext.ChallengeAsync("Auth0", new AuthenticationProperties() {
+
+
+                RedirectUri = returnUrl });
         }
 
         [Authorize]
@@ -38,7 +43,12 @@ namespace SampleMvcApp.Controllers
             {
                 Name = User.Identity.Name,
                 EmailAddress = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value,
-                ProfileImage = User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value
+                ProfileImage = User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value,
+                Country = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Country)?.Value,
+                Phone = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.MobilePhone)?.Value,
+                Adresse = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.StreetAddress)?.Value,
+                Birthday = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.DateOfBirth)?.Value,
+                Role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value,
             });
         }
 
@@ -47,7 +57,7 @@ namespace SampleMvcApp.Controllers
         /// application to see the in claims populated from the Auth0 ID Token
         /// </summary>
         /// <returns></returns>
-        [Authorize]
+        [Authorize(Roles = "admin")]
         public IActionResult Claims()
         {
             return View();

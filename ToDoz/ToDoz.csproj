@@ -4,30 +4,41 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Custom' ">
+    <StartAction>Project</StartAction>
+    <ApplicationURL>https://localhost:5001;http://localhost:5000</ApplicationURL>
+  </PropertyGroup>
   <ItemGroup>
+  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
   <PackageReference Include="WebEssentials.AspNetCore.StaticFilesWithCache" Version="1.0.1" />
 <PackageReference Include="Microsoft.NETCore.DotNetHost" Version="1.1.0" />
-<PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.2" />
 <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.1" />
 <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.2" />
 <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="1.1.0" />
 <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
 <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
 <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.0.0" />
+<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
+<PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
+<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.0" />
+<PackageReference Include="MySql.Data.EntityFrameworkCore" Version="6.10.9" />
+<PackageReference Include="System.Drawing.Common" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Authorize\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\Projects\" />
-    <Folder Include="Views\Pools\" />
-    <Folder Include="Views\Time Table\" />
+    <Folder Include="Data\" />
+    <Folder Include="Views\Project\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\assets\images\logo-text.png" />
     <Content Remove="ViewModels\_ViewImports.cshtml" />
+    <Content Remove="Controllers\TaskController.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\UserProfile.cs" />
   </ItemGroup>
 </Project>

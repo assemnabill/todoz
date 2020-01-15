@@ -13,6 +13,11 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using ToDoz.Data;
 
 namespace ToDoz
 {
@@ -27,9 +32,14 @@ public class Startup
 
         public IConfiguration Configuration { get; }
 
+
+
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DataContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -37,47 +47,69 @@ public class Startup
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-                // Add authentication services
-                services.AddAuthentication(options => {
-                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            })
-            .AddCookie()
-            .AddOpenIdConnect("Auth0", options => {
-
-                // Set the authority to your Auth0 domain
-                options.Authority = $"https://dev-ygofbr4w.auth0.com";
-
-                // Configure the Auth0 Client ID and Client Secret
-                options.ClientId = "NeWMXzb6hJ1whozIUVNrqg7Y19PM3xTe";
-                options.ClientSecret = "VTD8zedmFJGM9wDT4oHeYxHRxv0YbufXMuvd3TtOh6uKeTjeP7Wtn79enGD78hrt";
-
-                // Set response type to code
-                options.ResponseType = OpenIdConnectResponseType.Code;
-
-                // Configure the scope
-                options.Scope.Add("openid");
-                options.Scope.Add("profile");
-                options.Scope.Add("email");
-                // Set the correct name claim type
-                options.TokenValidationParameters = new TokenValidationParameters
+            // Add authentication services
+            string domain = $"https://dev-ygofbr4w.auth0.com";
+            services.AddAuthentication(options =>
                 {
-                    NameClaimType = "name"
-                };
+                    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    
+                })
 
-                // Set the callback path, so Auth0 will call back to http://localhost:3000/callback
-                // Also ensure that you have added the URL as an Allowed Callback URL in your Auth0 dashboard
-                options.CallbackPath = new PathString("/Dashboard/index");
+                .AddCookie()
+                .AddOpenIdConnect("Auth0", options => {
 
-                // Configure the Claims Issuer to be Auth0
-                options.ClaimsIssuer = "Auth0";
+                    
+                    // Set the authority to your Auth0 domain
+                    options.Authority = domain;
 
-                // Saves tokens to the AuthenticationProperties
-                options.SaveTokens = true;
 
-                options.Events = new OpenIdConnectEvents
-                {
+                    // Configure the Auth0 Client ID and Client Secret
+                    options.ClientId = "NeWMXzb6hJ1whozIUVNrqg7Y19PM3xTe";
+                    options.ClientSecret = "VTD8zedmFJGM9wDT4oHeYxHRxv0YbufXMuvd3TtOh6uKeTjeP7Wtn79enGD78hrt";
+
+                    // Set response type to code
+                    options.ResponseType = OpenIdConnectResponseType.Code;
+
+                    // Configure the scope
+                    options.Scope.Add("openid");
+                    options.Scope.Add("profile");
+                    options.Scope.Add("email");
+
+
+                    // Set the callback path, so Auth0 will call back to http://localhost:5001/callback
+                    // Also ensure that you have added the URL as an Allowed Callback URL in your Auth0 dashboard
+                    options.CallbackPath = new PathString("/Dashboard");
+
+                    // Configure the Claims Issuer to be Auth0
+                    options.ClaimsIssuer = "Auth0";
+
+                    // Saves tokens to the AuthenticationProperties
+                    options.SaveTokens = true;
+
+                    // Set the correct name claim type
+                    options.TokenValidationParameters = new TokenValidationParameters
+                        {
+
+
+                        NameClaimType = "name",
+                        RoleClaimType = "https://schemas.quickstarts.com/roles"
+
+                        };
+
+
+                    options.Events = new OpenIdConnectEvents
+                    {
+
+                    
+                    OnRedirectToIdentityProvider = context =>
+                        {
+                             context.ProtocolMessage.SetParameter("Auth0 Management API", "https://dev-ygofbr4w.auth0.com/api/v2/");
+
+                               return Task.FromResult(0);
+                        },
+                  
                     // handle the logout redirection
                     OnRedirectToIdentityProviderForSignOut = (context) =>
                     {
@@ -86,7 +118,7 @@ public class Startup
                         var postLogoutUri = context.Properties.RedirectUri;
                         if (!string.IsNullOrEmpty(postLogoutUri))
                         {
-                            if (postLogoutUri.StartsWith("/"))
+                            if (postLogoutUri.StartsWith("/", StringComparison.Ordinal))
                             {
                                 // transform to absolute
                                 var request = context.Request;
@@ -103,7 +135,18 @@ public class Startup
                 };
             });
 
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("read:messages", policy => policy.Requirements.Add(new HasScopeRequirement("read:messages", domain)));
+            });
+
+            // register the scope authorization handler
+            services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
+
+
             // Add framework services.
+            services.AddMvc();
             services.AddControllersWithViews();
         }
 
@@ -119,7 +162,7 @@ public class Startup
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -131,6 +174,9 @@ public class Startup
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+
+
+        
 
             app.UseEndpoints(endpoints =>
             {
