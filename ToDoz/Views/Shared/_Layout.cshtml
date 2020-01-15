@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] - ToDoz</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/assets/images/favicon.png">
+    <!-- Custom CSS -->
+    <meta name="keywords" content="Service Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+	
+	<!-- css files -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="~/lib/bootstrap/dist/css/style.css" rel='stylesheet' type='text/css' /><!-- custom css -->
+    <link href="~/lib/bootstrap/dist/css/font-awesome.min.css" rel="stylesheet"><!-- fontawesome css -->
+	<!-- //css files -->
+	
+	<!-- google fonts -->
+	<link href="//fonts.googleapis.com/css?family=Rosario:400,400i,700,700i" rel="stylesheet">
+	<!-- //google fonts -->
+        </head>
+
+
+
+<body>
+
+ 
+
+            @RenderBody()
+       
+
+    <footer class="footer text-center">
+        <div class="container">
+            &copy; 2019 TODOZ. All Rights Reserved | Design by
+						<a href="http://w3layouts.com/"> W3layouts </a> 
+        </div>
+    </footer>
+
+
+    <!-- popup for register -->
+<div id="popup-register" class="popup-effect">
+	<div class="popup popup-register">
+		<div class="login px-sm-4 mx-auto mw-100">
+			<h5 class=" mb-4 editContent" data-selector=".editContent" style="">Sign up to create an account</h5>
+			<form action="#" method="post" data-bitwarden-watching="1">
+				<div class="form-group editContent" data-selector=".editContent" style="">
+					<input type="text" class="form-control" id="validationDefault01" placeholder="Full Name" required="">
+				</div>
+				<div class="form-group editContent" data-selector=".editContent" style="">
+					<input type="email" class="form-control" id="validationDefault03" placeholder="Email Id" required="">
+				</div>
+				<div class="form-group editContent" data-selector=".editContent" style="">
+					<input type="password" class="form-control" id="password1" placeholder="Password" required="">
+				</div>
+				<div class="form-group editContent" data-selector=".editContent" style="outline: currentcolor none medium; outline-offset: -2px; cursor: inherit;">
+					<select class="custom-select" id="inputGroupSelect03">
+						<option selected="">Choose Country</option>
+						<option value="1">United States</option>
+						<option value="2">London</option>
+						<option value="3">Germany</option>
+						<option value="4">Others</option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-primary submit" data-selector="a.btn, button.btn" style="border-radius: 0px; font-size: 15px; background-color: rgb(32, 201, 151);" asp-area="" asp-controller="Dashboard" asp-action="Index">Sign Up</button>
+				<p class="text-center mt-3">
+					<a href="#" class="editContent" data-selector=".editContent" style="color: rgb(32, 201, 151); font-size: 15px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif;">By clicking Sign Up, I agree to your terms</a>
+				</p>
+				<p class="text-center">Already have an account? 
+					<a href="#popup-signin" class="">Sign In</a>
+				</p>
+			</form>
+		</div>
+		<a class="close" href="#">×</a>
+	</div>
+</div>
+<!-- //popup for register -->
+
+
+
+<!-- popup for sign in -->
+<div id="popup-signin" class="popup-effect">
+	<div class="popup">
+		<div class="login px-sm-4 mx-auto mw-100">
+			<h5 class="mb-4 editContent" data-selector=".editContent" style="color: rgb(0, 0, 0); font-size: 23px; font-family: &quot;Rosario&quot;, sans-serif;">Sign In to your account</h5>
+			<p class="mb-3 editContent medium-editor-placeholder" data-selector=".editContent" style="color: rgb(68, 68, 68); font-size: 15px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; outline-offset: -2px; cursor: inherit;"><br></p>
+			<form action="#" method="post" data-bitwarden-watching="1">
+				<div class="form-group editContent" data-selector=".editContent" style="">
+					<input type="email" class="form-control" id="validation" placeholder="Email Id" required="">
+				</div>
+				<div class="form-group editContent" data-selector=".editContent" style="">
+					<input type="password" class="form-control" id="password2" placeholder="Password" required="">
+				</div>
+				<button type="submit" class="btn btn-primary submit" data-selector="a.btn, button.btn" style="border-radius: 0px; font-size: 15px; background-color: rgb(32, 201, 151);" asp-area="" asp-controller="Account" asp-action="Login">Sign In</button>
+			</form>
+		</div>
+		<a class="close" href="#">×</a>
+	</div>
+</div>
+<!-- //popup for sign in -->
+
+   
+</body>
+</html>

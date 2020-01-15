@@ -1,0 +1,270 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    
+}
+
+    
+<!-- //header -->
+    <header>
+	<div class="container">
+		<!-- nav -->
+		<nav class="py-4 d-lg-flex">
+			<div id="logo">
+                <img src="~/assets/images/logo.png" />
+			</div>
+			<label for="drop" class="toggle"><span class="fa fa-bars" data-selector="span.fa" style="outline: none; cursor: inherit;"></span></label>
+			<input type="checkbox" id="drop">
+			<ul class="menu mt-md-2 ml-auto">
+				<li class="mr-lg-4 mr-2 active"><a asp-controller="Home" asp-action="Index" data-selector="nav a" style="">Home</a></li>
+				
+				<li class="mr-lg-4 mr-2"><a href="#features" data-selector="nav a" style="color: rgb(255, 255, 255); font-weight: 400; text-transform: capitalize;">Features</a></li>
+				<li class="mr-lg-4 mr-2"><a href="#how" data-selector="nav a" style="color: rgb(255, 255, 255); font-weight: 400; text-transform: capitalize;">How it Works</a></li>
+				
+				<li class="mr-lg-4 mr-2"><a href="#contact" data-selector="nav a" style="">Contact</a></li>
+
+                 @if (User.Identity.IsAuthenticated)
+             {
+                  <li class="mr-lg-4 mr-2"><a data-selector="nav a" asp-controller="Account" asp-action="Profile" style="color: rgb(255, 255, 255); font-weight: 400; text-transform: capitalize;">Hi @User.Identity.Name!</a></li>
+                  <li class="login-icon">
+				    <a class="user btn" asp-controller="Account" asp-action="Logout" data-selector="a.btn, button.btn" style="border-radius: 0px; font-size: 13px; background-color: rgb(32, 201, 151);">SIGN OUT</a>
+			     </li>
+             }
+             else
+             {
+                   <li class="login-icon">
+				        <a class="user btn" asp-controller="Account" asp-action="Login" data-selector="a.btn, button.btn" style="border-radius: 0px; font-size: 13px; background-color: rgb(32, 201, 151);">SIGN IN</a>
+			       </li>
+             }
+			</ul>
+            
+		</nav>
+		<!-- //nav -->
+	</div>
+        </header>
+<!-- //header -->
+
+<!-- banner -->
+<section class="position-relative">
+	<div class="banner w3pvt-banner bg bg1" id="home" data-selector=".bg.bg1, .bg.bg2, .header10, .header11" style="background-color: rgba(0, 0, 0, 0); margin-top: 0px; background-image: url(&quot;../assets/images/authbgimage.jpg&quot;);">
+		<div class="container">
+			<div class="banner-text">
+				<div class="slider-info">
+					<div class="w3pvt-logo mt-lg-5">
+						<h2 class="editContent" data-selector=".editContent" style="outline: currentcolor none medium; cursor: inherit;">Manage Your Team Work In An Easy Way</h2>
+						<p class="mt-3 editContent" data-selector=".editContent" style="outline: currentcolor none medium; cursor: inherit;">Define your Goals, Divide your Tasks using TODOZ, and Conquer!</p>
+                        <br />
+                            <div class="banner-buttons slider-info position-absolute" style="width:800px;">
+                                @if (User.Identity.IsAuthenticated) {
+                                    
+                                    <a asp-controller="Dashboard" asp-action="Index" class="btn mr-2" data-selector="a.btn, button.btn" style="">Dashboard</a>
+		                            <a href="#services" class="btn" data-selector="a.btn, button.btn" style="border-radius: 0px; font-size: 15px;">KNOW MORE</a>
+
+                                } else { 
+		                        <a asp-controller="Account" asp-action="Login" class="btn mr-2" data-selector="a.btn, button.btn" style="">Get Started</a>
+		                        <a href="#services" class="btn" data-selector="a.btn, button.btn" style="border-radius: 0px; font-size: 15px;">KNOW MORE</a>
+                                }
+	                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+<!-- //banner -->	
+
+			
+<!-- Features -->
+<section class="services py-5 w3layouts-services editContent" id="features" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif;">
+	<div class="container py-md-5">
+		<div class="row">
+			<div class="col-lg-2 col-sm-4 px-1 grid1-margin w3-grid">
+				<div class="serv-grids icon1-color editContent" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(44, 44, 44); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">
+					
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">IE.</h3>
+				</div>
+				<div class="serv-grids mt-2 icon2-color editContent" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(44, 44, 44); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">
+					
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">Integer pulvinar leo.</h3>
+				</div>
+			</div>
+			<div class="col-lg-2 col-sm-4 px-1 grid2-margin w3-grid">
+				<div class="serv-grids icon3-color editContent" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(44, 44, 44); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">
+					
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">Integer pulvinar leo.</h3>
+				</div>
+				<div class="serv-grids mt-2 icon4-color editContent" data-selector=".editContent" style="color: rgb(0, 174, 255); font-size: 18px; background-color: rgb(44, 44, 44); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit; outline-offset: -2px;">
+					
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">Integer pulvinar leo.</h3>
+				</div>
+			</div>
+			<div class="col-lg-2 col-sm-4 px-1 grid3-margin w3-grid">
+				<div class="serv-grids icon5-color editContent medium-editor-element" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(44, 44, 44); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; outline-offset: -2px; cursor: inherit;" spellcheck="true" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="1" medium-editor-index="7c4915fe-22d2-ccc0-4e4d-38c1444bbc1f" data-placeholder="Type your text" data-medium-focused="true" contenteditable="true">
+					
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">Integer pulvinar leo.</h3>
+				</div>
+				<div class="serv-grids mt-2 icon6-color editContent" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(44, 44, 44); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; outline-offset: -2px; cursor: inherit;">
+					
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">Integer pulvinar leo.</h3>
+				</div>
+			</div>
+			<div class="col-lg-5 offset-lg-1 serv-right mt-lg-0 mt-5 w3-grid">
+				<h3 class="heading mb-4 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 50px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; outline-offset: -2px; cursor: inherit;">Features</h3>
+				<h4 class="mb-3 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 25px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif;">Never Lose Track of your Projects. Maximize your Productivity using the Cool Approach of TODOZ to help keep your Project well orgenized..</h4>
+				<p class="editContent" data-selector=".editContent" style="">-BPMN, BDN&nbsp; <br></p><p class="editContent" data-selector=".editContent" style="">-Data Driven <br></p><p class="editContent" data-selector=".editContent" style="">-Graphs(statistics), -Tabels(Issues,Tasks) <br></p><p class="editContent" data-selector=".editContent" style="">-Team Communication (Comments Section)<br></p><p class="editContent" data-selector=".editContent" style="">-Planner (Deadlines, Meetings, etc)<br></p><p class="editContent" data-selector=".editContent" style="">-User Role hierarchy inside project for management <br></p><p class="editContent" data-selector=".editContent" style="">-Export (Project, Workflows as *.pptx, *.pdf,*.<br></p>
+				<p class="mt-2 editContent" data-selector=".editContent" style="outline: none; cursor: inherit;">-Secure, encrypted and private<br></p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //Features -->
+
+<!-- how it works -->
+<section class="how py-5 w3layouts-sec editContent" id="how" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif;">
+	<div class="container py-md-5">
+		<div class="row">
+			<div class="col-lg-4 about-left">	
+				<span class="pl-0 editContent" data-selector=".editContent" style="color: rgb(32, 201, 151); font-size: 16px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">Step by step</span>
+				<h3 class="heading mb-lg-5 mb-4 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 50px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">How it Works</h3>
+			</div>
+			<div class="col-lg-8 about-text">
+				<p class="mt-lg-2 editContent" data-selector=".editContent" style="outline: currentcolor none medium; cursor: inherit;">Get shit done in 4 simple steps.<br></p>
+			</div> 
+			<div class="col-lg-3 col-md-6 how-icon mt-4 w3layout-grid" style="">	
+				<div class="ser-icon editContent" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(68, 68, 68); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; outline-offset: -2px; cursor: inherit;">
+					
+				</div>
+				<div class=" how-grid" >
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">Join the Club<br></h3>
+					<p class="mt-2 editContent" data-selector=".editContent" style="outline: currentcolor none medium; cursor: inherit;">First you need to login to your account in order to manage your projects. Still don't have one? Sign Up now!<br></p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 how-icon1 mt-4 w3layout-grid" style="">	
+				<div class="ser-icon editContent" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(68, 68, 68); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">
+					
+				</div>
+				<div class="how-grid">
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">Watcha wanna Do?<br></h3>
+					<p class="mt-2 editContent" data-selector=".editContent" style="outline: currentcolor none medium; cursor: inherit;">What do you want to achieve? Define your main goal and then break it down to smaller targets. <br></p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 how-icon2 mt-4 w3layout-grid" style="">	
+				<div class="ser-icon editContent medium-editor-placeholder" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(68, 68, 68); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">
+					
+				</div>
+				<div class="how-grid">
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">know your shit<br></h3>
+					<p class="mt-2 editContent" data-selector=".editContent" style="outline: currentcolor none medium; cursor: inherit;">Now you share those Goals with TODOZ through Project Wizard.</p><p class="mt-2 editContent" data-selector=".editContent" style="outline: currentcolor none medium; cursor: inherit;">TODOZ will then create modifiable project structure for you<br></p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 how-icon3 mt-4 w3layout-grid" style="">	
+				<div class="ser-icon editContent medium-editor-placeholder" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(68, 68, 68); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">
+					
+				</div>
+				<div class="how-grid">
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="outline: currentcolor none medium; cursor: inherit; outline-offset: -2px; color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif;">Call the Homies!<br></h3>
+					<p class="mt-2 editContent" data-selector=".editContent" style="">Now since the project already exists, you can distribute tasks with your Team.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //how it works -->
+
+<!-- //Why TODOZ? -->
+<section class="services py-5 w3layouts-services editContent" id="services" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;"><div><br></div><div><p><br></p></div><div><p><br></p></div><div class="container py-md-5">
+		<div class="row">
+			<div class="col-lg-2 col-sm-4 px-1 grid1-margin w3-grid">
+				<div class="serv-grids icon1-color editContent" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(44, 44, 44); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">
+					
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">IE.</h3>
+				</div>
+				<div class="serv-grids mt-2 icon2-color editContent" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(44, 44, 44); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">
+					
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">Integer pulvinar leo.</h3>
+				</div>
+			</div>
+			<div class="col-lg-2 col-sm-4 px-1 grid2-margin w3-grid">
+				<div class="serv-grids icon3-color editContent" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(44, 44, 44); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">
+					
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">Integer pulvinar leo.</h3>
+				</div>
+				<div class="serv-grids mt-2 icon4-color editContent" data-selector=".editContent" style="color: rgb(0, 174, 255); font-size: 18px; background-color: rgb(44, 44, 44); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit; outline-offset: -2px;">
+					
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">Integer pulvinar leo.</h3>
+				</div>
+			</div>
+			<div class="col-lg-2 col-sm-4 px-1 grid3-margin w3-grid">
+				<div class="serv-grids icon5-color editContent medium-editor-element" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(44, 44, 44); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; outline-offset: -2px; cursor: inherit;" spellcheck="true" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="1" medium-editor-index="7c4915fe-22d2-ccc0-4e4d-38c1444bbc1f" data-placeholder="Type your text" data-medium-focused="true" contenteditable="true">
+					
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">Integer pulvinar leo.</h3>
+				</div>
+				<div class="serv-grids mt-2 icon6-color editContent" data-selector=".editContent" style="color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(44, 44, 44); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; outline-offset: -2px; cursor: inherit;">
+					
+					<h3 class="mt-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 23px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">Integer pulvinar leo.</h3>
+				</div>
+			</div>
+			<div class="col-lg-5 offset-lg-1 serv-right mt-lg-0 mt-5 w3-grid">
+        <span class="info editContent" data-selector=".editContent" style="outline: currentcolor none medium; cursor: inherit; outline-offset: -2px; color: rgb(32, 201, 151); font-size: 16px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif;">YOUNG, WILD AND FREE!</span>
+		<h3 class="heading mb-lg-5 mb-4 editContent" data-selector=".editContent" style="color: rgb(238, 238, 238); font-size: 50px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif;">Why use TODOZ?<br></h3>
+	
+				<h4 class="mb-3 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 25px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif;">TODOZ is a game changing productivity app that utilizes gamification and social influence toget you working.</h4>
+				<p class="editContent" data-selector=".editContent" style="">-Professional appearance and processing using Business related models.&nbsp; </p><p class="editContent" data-selector=".editContent" style="">-Intuitive Interface <br></p><p class="editContent" data-selector=".editContent" style="">-Elegant Design <br></p><p>-Gamification : Amass points to level and earn rewords based on you're Produtivy.</p><p>-Social: Get more productive with tips from friends and complete to earn points.</p><p class="editContent" data-selector=".editContent" style="">-Free</p><p class="mt-2 editContent" data-selector=".editContent" style="">-Secure, encrypted and private<br></p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //Why TODOZ? -->
+
+<!-- contact -->
+<section class="contact py-5 editContent" id="contact" data-selector=".editContent" style="background-image: url(&quot;../assets/images/team-4503157_1920.jpg&quot;); outline: currentcolor none medium; outline-offset: -2px; cursor: inherit; color: rgb(33, 37, 41); font-size: 18px; background-color: rgb(68, 68, 68); font-family: &quot;Rosario&quot;, sans-serif;">
+	<div class="container py-md-5">
+		<div class="row">
+			<div class="col-lg-3 contact-left">	
+				<p><span class="editContent" data-selector=".editContent" style="color: rgb(32, 201, 151); font-size: 16px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif;">Don't Wait</span></p>
+				<h3 class="heading mb-lg-5 mb-4 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 50px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif;">Contact</h3>
+			</div>
+			<div class="col-lg-9 about-text">
+				<p class="mt-lg-2 editContent" data-selector=".editContent" style="color: rgb(255, 255, 255); font-size: 17px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Rosario&quot;, sans-serif; outline: currentcolor none medium; cursor: inherit;">If you have any queries, or want to speak to one of our customer support executive, Please contact us for more details by below given information.</p>
+				<div class="row mt-4"><br></div> 
+			</div>
+			<div class="col-lg-8 mt-5">
+				<form action="#" method="post">
+					<div class="row main-w3layouts-sectns">
+						<div class="col-md-6 w3-btm-spc form-text1 editContent medium-editor-placeholder" data-selector=".editContent" style="">
+							<input type="text" name="Name" placeholder="Enter Your Name" required="" data-com.bitwarden.browser.user-edited="yes">
+						</div>
+						<div class="col-md-6 w3-btm-spc form-text2 editContent" data-selector=".editContent" style="">
+							<input type="text" name="Phone no" placeholder="Enter Phone Number" required="" data-com.bitwarden.browser.user-edited="yes">
+						</div>
+					</div>
+					<div class="row main-w3layouts-sectns">
+						<div class="col-md-6 w3-btm-spc form-text1 editContent" data-selector=".editContent" style="">
+							<input type="email" name="email" placeholder="Enter Your Email" required="" data-com.bitwarden.browser.user-edited="yes">
+						</div>
+						<div class="col-md-6 w3-btm-spc form-text2 editContent" data-selector=".editContent" style="">
+							<input type="text" name="subject" placeholder="Subject" required="" data-com.bitwarden.browser.user-edited="yes">
+						</div>
+					</div>
+					<div class="main-w3layouts-sectns ">
+						<div class="w3-btm-spc form-text2 p-0 editContent" data-selector=".editContent" style="">
+							<textarea placeholder="Enter Your Message Here"></textarea>
+						</div>
+					</div>
+					<button class="btn" data-selector="a.btn, button.btn" style="outline: currentcolor none medium; outline-offset: -2px; cursor: inherit; border-radius: 0px; font-size: 15px; background-color: rgb(32, 201, 151);">Submit</button>
+				</form> 
+			</div>
+			
+		</div>
+	</div>
+</section>
+<!-- //contact -->
+
+
+
+
+
+
+
+
+ 
