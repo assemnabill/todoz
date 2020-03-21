@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Threading.Tasks;
-using ToDoz.Models;
+
 
 namespace ToDoz.ViewModels
 {
     public class ProjectViewModel
     {
 
-        public Image ProjectImage { get; set; }
+        public string ProjectImage { get; set; }
 
         // Project Name
         public string ProjectName { get; set; }
