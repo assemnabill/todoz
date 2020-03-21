@@ -36,9 +36,6 @@ namespace ToDoz.Controllers
         }
 
 
-   
-
-
         /* Method views TimeTable */
         public IActionResult TimeTable()
         {

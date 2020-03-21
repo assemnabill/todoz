@@ -7,8 +7,7 @@ using ToDoz.ViewModels;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-
-
+using System;
 
 namespace ToDoz.Controllers
 
@@ -24,7 +23,36 @@ namespace ToDoz.Controllers
             //...
         }
         */
-       
+
+        public void Add()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Connect()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Edit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Render()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Save()
+        {
+            throw new NotImplementedException();
+        }
 
 
         /* Returns a view of certain task */

@@ -27,5 +27,8 @@ namespace ToDoz.ViewModels
         // shows user working on the Task
         public string Handler { get; set; }
 
+        public DateTime DateTime { get; set; }
+
+
     }
 }

@@ -19,11 +19,7 @@ namespace ToDoz.ViewModels
         public DateTime Created { get; set; }
 
         // Project Leader Name
-        public virtual ApplicationUser ProjectLeader { get; set; }
-
-        // Sub Process of the Project
-        public SubProcess[] SubProcesses { get; set; }
-
+        public string ProjectLeader { get; set; }
 
 
 

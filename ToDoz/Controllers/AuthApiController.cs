@@ -6,7 +6,7 @@ namespace ToDoz.Controllers
 {
     [Route("Auth0 Management API")]
     [ApiController]
-    public class ApiController : ControllerBase
+    public class AuthApiController : ControllerBase
     {
         [HttpGet("public")]
         public IActionResult Public()
