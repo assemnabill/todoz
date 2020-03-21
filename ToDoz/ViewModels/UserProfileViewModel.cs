@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using ToDoz.Models;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace ToDoz.ViewModels
 {
@@ -29,9 +24,9 @@ namespace ToDoz.ViewModels
 
         public string Role { get; set; }
 
-        public ICollection<Pool> Pool { get; set; }
+        public string Pool { get; set; }
 
-        public ICollection<Lane> Lane { get; set; }
+        public string Lane { get; set; }
 
 
 

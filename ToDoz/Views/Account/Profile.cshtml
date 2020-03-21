@@ -6,64 +6,35 @@
 
 
 <div class="card">
-                            <form class="form-horizontal" data-bitwarden-watching="1">
-                                <div class="card-body">
-                                    <h4 class="card-title">Personal Info:</h4>
-                                    <div class="col-md-2">
-                                             <img src="@Model.ProfileImage"
-                                                alt="" class="img-rounded img-responsive" />
-                                     </div>
-                                    <div class="form-group row">
-                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Name</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="fname" placeholder="@Model.Name" data-com.bitwarden.browser.user-edited="yes">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Email Adresse</label>
-                                        <div class="col-sm-9">
-                                            <input type="password" class="form-control" id="lname" placeholder="@Model.EmailAddress">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Company</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="email1" placeholder="@Model.Pool">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Contact No</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="cono1" placeholder="@Model.Phone">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Birthday</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="cono1" placeholder="@Model.Birthday">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Adress</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="cono1" placeholder="@Model.Adresse">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Role</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="cono1" placeholder="@Model.Role">
-                                        </div>
-                                    </div>
-                                
-                                </div>
-                                <div class="border-top">
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-primary">Save Changes</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+    <form class="form-horizontal">
+        <div class="card-body">
+            <div class="form-group col-md-2">
+                <img src="@Model.ProfileImage"
+                     alt="" class="img-rounded img-responsive" />
+            </div>
+            <div class="form-group row">
+                <text class="col-sm-3 text-left">Name</text>
+                <div class="col-sm-9">
+                    <text id="name">@Model.Name</text>
+                </div>
+            </div>
+            <div class="form-group row">
+                <text class="col-sm-3 text-left">Email Adresse</text>
+                <div class="col-sm-9">
+                    <text id="email">@Model.EmailAddress</text>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <text class="col-sm-3 text-left">Birthday</text>
+                <div class="col-sm-9">
+                    <text id="birthday">@Model.Birthday</text>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
 
 
 

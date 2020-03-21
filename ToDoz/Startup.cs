@@ -18,6 +18,8 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using ToDoz.Data;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace ToDoz
 {
@@ -31,9 +33,6 @@ public class Startup
         }
 
         public IConfiguration Configuration { get; }
-
-
-
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -148,9 +147,31 @@ public class Startup
             // Add framework services.
             services.AddMvc();
             services.AddControllersWithViews();
+
+            // Maneging Resources
+            services.AddLocalization(o => o.ResourcesPath = "Resources");
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                new CultureInfo("en-US"),
+                new CultureInfo("en-GB"),
+                new CultureInfo("de-DE")
+            };
+                options.DefaultRequestCulture = new RequestCulture("en-US", "en-US");
+
+                // You must explicitly state which cultures your application supports.
+                // These are the cultures the app supports for formatting 
+                // numbers, dates, etc.
+
+                options.SupportedCultures = supportedCultures;
+
+                // These are the cultures the app supports for UI strings, 
+                // i.e. we have localized resources for.
+
+                options.SupportedUICultures = supportedCultures;
+            });
         }
-
-
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -185,5 +206,8 @@ public class Startup
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+
     }
+
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using ToDoz.ViewModels;
+﻿using ToDoz.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace ToDoz.Data

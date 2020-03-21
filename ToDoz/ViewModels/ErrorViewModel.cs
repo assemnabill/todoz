@@ -1,5 +1,3 @@
-using System;
-
 namespace ToDoz.Models
 {
     public class ErrorViewModel

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 
 namespace ToDoz.ViewModels
@@ -26,6 +23,9 @@ namespace ToDoz.ViewModels
 
         // shows user working on the Task
         public string Handler { get; set; }
+
+        public DateTime DateTime { get; set; }
+
 
     }
 }

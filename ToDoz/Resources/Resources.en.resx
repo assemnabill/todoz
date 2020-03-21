@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+  <data name="logo_icon" xml:space="preserve">
+        <value>"~/assets/images/logo-icon.png"</value>
+  </data>
+  <data name="logo_text" xml:space="preserve">
+        <value>"~/assets/images/logo-text.png"</value>
+  </data>  
+  <data name="fav_icon" xml:space="preserve">
+        <value>"~/assets/images/favicon.png"</value>
+  </data>
+  <data name="bootstrap" xml:space="preserve">
+        <value>"~/lib/bootstrap/dist/css/bootstrap.min.css"</value>
+  </data>
+  <data name="styles" xml:space="preserve">
+        <value>"~/lib/bootstrap/dist/css/stylez.min.css"</value>
+  </data>  
+  <data name="charts" xml:space="preserve">
+        <value>"~/assets/libs/flot/css/float-chart.css"</value>
+  </data>
+  
+
+</root>

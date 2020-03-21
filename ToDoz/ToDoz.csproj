@@ -22,7 +22,6 @@
 <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
 <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.0" />
 <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="6.10.9" />
-<PackageReference Include="System.Drawing.Common" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +31,7 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Data\" />
     <Folder Include="Views\Project\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\assets\images\logo-text.png" />
@@ -40,5 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\UserProfile.cs" />
+    <Compile Remove="Models\Sequence Flow.cs" />
+    <Compile Remove="Models\ConnectingObject.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Resources.xml" />
   </ItemGroup>
 </Project>
