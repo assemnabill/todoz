@@ -2,7 +2,7 @@
 
     var controller = ViewContext.RouteData.Values["Controller"].ToString();
 
-    if (controller == "Home")
+    if (controller.Equals("Home"))
     {
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
